@@ -22,25 +22,6 @@ public:
         liczby[2] = _liczby[2];
     }
 
-    static void main() {
-        Vektor3d v1(1, 2, 3);
-        cout << sizeof v1 << endl;
-        Vektor3d v2(4, 5, 6);
-        Vektor3d v1Kopia1(v1);
-        Vektor3d v1Kopia2 = v1;
-        double l[3];
-        v1.getCoefs(l);
-        global::wypisz(l, 3);
-        v2.getCoefs(l);
-        global::wypisz(l, 3);
-        v1 = v2;
-        v1.getCoefs(l);
-        global::wypisz(l, 3);
-        v1Kopia1.getCoefs(l);
-        global::wypisz(l, 3);
-        v1Kopia2.getCoefs(l);
-        global::wypisz(l, 3);
-    }
 };
 
 #endif //LAB2_CPP_ADV_VEKTOR3D_H

@@ -104,58 +104,6 @@ public:
         }
         cout << endl;
     }
-
-    static void main1() {
-        const double wartosci[] = {1, 2, 3};
-        const double wartosci2[] = {4, 5, 6, 7, 8, 9};
-        VektorNd v1(wartosci, 3);
-        VektorNd v2(v1);
-        VektorNd v3(wartosci2, 6);
-        double l[6];
-        v1.getCoefs(l);
-        global::wypisz(l, 3);
-        v2.getCoefs(l);
-        global::wypisz(l, 3);
-
-        v1 = v2;
-
-        v1.getCoefs(l);
-        global::wypisz(l, 3);
-        v2.getCoefs(l);
-        global::wypisz(l, 3);
-
-        v1.setCoef(100.0, 0);
-        v1.getCoefs(l);
-        global::wypisz(l, 3);
-        v2.getCoefs(l);
-        global::wypisz(l, 3);
-
-        v2 = v2;
-        v2.getCoefs(l);
-        global::wypisz(l, 3);
-    }
-
-    static void main2() {
-        const double wartosci[] = {1, 2, 3};
-        VektorNd v(wartosci, 3);
-        cout << "Mój adres: " << &v << endl;
-        VektorNd::wypiszV1(v);
-        VektorNd::wypiszV2(v);
-        cout << "hej" << endl;
-    }
-
-    static void main3() {
-        const double wartosci[] = {1, 2, 3};
-        VektorNd v1(wartosci, 3);
-        v1.wypisz();
-        VektorNd v2(v1);
-        v2.wypisz();
-        v2.setCoef(5, 0);
-        v1.wypisz();
-        v2.wypisz();
-    }
-
-
 };
 
 
