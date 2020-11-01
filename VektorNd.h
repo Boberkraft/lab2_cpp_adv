@@ -22,7 +22,13 @@ private:
         }
         out << "]" << endl;
     }
+
 public:
+    VektorNd() {
+        _liczby = new double[0];
+        _wymiar = 0;
+    }
+
     VektorNd(const double liczby[], int wymiar) {
         cout << "konstruktor poprzez new itd." << endl;
         _liczby = new double[wymiar];
@@ -45,6 +51,7 @@ public:
         cout << "konstruktor poprzez =" << endl;
         if (_wymiar != right._wymiar) {
             delete[] _liczby;
+
             _liczby = new double[right._wymiar];
             _wymiar = right._wymiar;
         }
@@ -80,7 +87,7 @@ public:
         return _wymiar;
     }
 
-    friend ostream& operator<<(ostream& left, VektorNd& right) {
+    friend ostream &operator<<(ostream &left, VektorNd &right) {
         right.wypisz(left);
         return left;
     }

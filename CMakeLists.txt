@@ -3,4 +3,4 @@ project(lab2_cpp_adv)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(lab2_cpp_adv main.cpp Vektor3d.h VektorNd.h)
+add_executable(lab2_cpp_adv main.cpp Vektor3d.h VektorNd.h cmake-build-debug/VectorOfVectors1.h)

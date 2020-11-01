@@ -1,6 +1,6 @@
 
 #include <iostream>
-
+#include <sstream>
 using namespace std;
 
 void wypisz(double tab[], int rozmiar) {
@@ -13,7 +13,8 @@ void wypisz(double tab[], int rozmiar) {
 
 #include "Vektor3d.h"
 #include "VektorNd.h"
-
+#include "VectorOfVectors1.h"
+#include "VectorOfVectors2.h"
 
 static void main1() {
     Vektor3d v1(1, 2, 3);
@@ -92,10 +93,69 @@ void main5() {
     file << v1;
 }
 
+void main6() {
+    const double wartosci1[] = {1, 2, 3};
+    const double wartosci2[] = {4, 5, 6};
+    const double wartosci3[] = {7, 8, 9, 10};
+
+    const VektorNd *wektory[] = {
+            new VektorNd(wartosci1, 3),
+            new VektorNd(wartosci2, 3),
+            new VektorNd(wartosci3, 4),
+    };
+
+    VectorOfVectors1 vov1(wektory, 3);
+    auto vov2 = vov1;
+    auto vov3 = new VectorOfVectors1(wektory, 3);
+
+    vov1 = vov1;
+    cout << vov1;
+
+    cout << "Usuwam vov3!" << endl;
+    delete vov3;
+    cout << "Koniec usuwania vov3!" << endl;
+
+}
+
+void main7() {
+    const double wartosci1[] = {1, 2, 3};
+    const double wartosci2[] = {4, 5, 6};
+    const double wartosci3[] = {7, 8, 9, 10};
+
+    const VektorNd *wektory[] = {
+            new VektorNd(wartosci1, 3),
+            new VektorNd(wartosci2, 3),
+            new VektorNd(wartosci3, 4),
+    };
+
+    VectorOfVectors2 vov1(wektory, 3);
+    auto vov2 = vov1;
+    auto vov3 = new VectorOfVectors2(wektory, 3);
+    auto vov4 = VectorOfVectors2(*vov3);
+
+    cout << vov1;
+    cout << vov2;
+
+    cout << "Usuwam" << endl;
+    delete vov3;
+    cout << "Koniec usuwania" << endl;
+}
+
+void main8() {
+    VectorOfVectors2 vov;
+    istringstream wejscie("1 20.5 33\n4 508 6.3\n1\n");
+
+    wejscie >> vov;
+    cout << vov;
+}
+
 int main() {
-    main1();
-    main2();
-    main3();
-    main4();
-    main5();
+//    main1();
+//    main2();
+//    main3();
+//    main4();
+//    main5();
+//    main6();
+//    main7();
+    main8();
 }
