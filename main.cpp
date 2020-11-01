@@ -143,9 +143,13 @@ void main7() {
 
 void main8() {
     VectorOfVectors2 vov;
-    istringstream wejscie("1 20.5 33\n4 508 6.3\n1\n");
+    istringstream wejscie1("12 20.5 33\n4 508 6.3\n1\n");
+    istringstream wejscie2("2 3 32 39\n1 2 3 4 5 6 7 8 9\n");
 
-    wejscie >> vov;
+    // PROSZĘ nie zapomnieć wcisnać ENTER i wysłać EOF (cmd + D)
+//    cin >> vov;
+    wejscie1 >> vov;
+    wejscie2 >> vov;
     cout << vov;
 }
 

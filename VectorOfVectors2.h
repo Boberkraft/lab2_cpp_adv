@@ -9,10 +9,11 @@
 
 
 class VectorOfVectors2 {
-    VektorNd *vektory { nullptr };
-    int size { 0 };
+    int size{0};
+    VektorNd *vektory{nullptr};
 public:
     VectorOfVectors2() = default;
+
     VectorOfVectors2(const VektorNd *_vektory[], int _size) {
         vektory = new VektorNd[_size];
         for (int i = 0; i < _size; i++) {
@@ -46,6 +47,18 @@ public:
         cout << "Destruktor VectorOfVectors2<" << this << ">" << endl;
     }
 
+    void dodaj_nowy(const VektorNd *vektor) {
+        VektorNd *nowe_vektory = new VektorNd[size + 1];
+        for (int i = 0; i < size; i++) {
+            nowe_vektory[i] = vektory[i];
+        }
+        nowe_vektory[size] = *vektor;
+
+        delete[] vektory;
+        vektory = nowe_vektory;
+        size++;
+    }
+
     friend ostream &operator<<(ostream &left, VectorOfVectors2 &right) {
         left << "VectorOfVectors2<" << &right << "> {" << endl;
         for (int i = 0; i < right.size; i++) {
@@ -56,22 +69,22 @@ public:
     }
 
     friend istream &operator>>(istream &left, VectorOfVectors2 &right) {
-        cout << "wczytuję..." << endl;
-        string line;
-        while (getline(left, line)) {
-            int start = 0;
-            for (int i = 0; i < line.size() + 1; i++) {
-                bool end_of_line = (i == line.size());
-                if (end_of_line || line[i] == ' ') {
-                    string tmp = line.substr(start, i - start);
-                    double number;
-                    number = strtod(tmp.c_str(), nullptr);
-                    cout << number << endl;
-                    start = i + 1;
-                }
+        double liczby[10];
+        size_t wymiar = 0;
 
+        string line;
+        while (getline(left, line) && !line.empty()) {
+            char *p_start = (char *) line.c_str();
+            char *p_end = p_start;
+
+            while (*p_end != '\0') {
+                double number = strtod(p_start, &p_end);
+                p_start = p_end;
+                liczby[wymiar] = number;
+                wymiar++;
             }
-            cout << line << endl;
+            right.dodaj_nowy(new VektorNd(liczby, wymiar));
+            wymiar = 0;
         }
         return left;
     }
