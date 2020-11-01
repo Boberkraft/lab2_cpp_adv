@@ -30,16 +30,9 @@ public:
         size = other.size;
     }
 
-    VectorOfVectors2 &operator=(const VectorOfVectors2 &right) {
-
-        if (size != right.size) {
-            delete[] vektory;
-            vektory = new VektorNd[right.size];
-            size = right.size;
-        }
-        for (int i = 0; i < size; i++) {
-            vektory[i] = right.vektory[i];
-        }
+    VectorOfVectors2 &operator=(VectorOfVectors2 right) {
+        swap(vektory, right.vektory);
+        swap(size, right.size);
         return *this;
     }
 

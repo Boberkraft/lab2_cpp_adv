@@ -12,7 +12,6 @@ class VektorNd {
     double *_liczby;
     int _wymiar;
 private:
-
     void wypisz(ostream &out = cout) {
         out << "Vektor" << _wymiar << "d<" << this << ">[";
         for (int i = 0; i < _wymiar; i++) {
@@ -38,8 +37,8 @@ public:
         }
     }
 
-    VektorNd(const VektorNd &oryginal) {
-        cout << "konstruktor poprzez ()" << endl;
+    VektorNd(const VektorNd& oryginal) {
+        cout << "konstruktor VektorNd ()" << endl;
         _liczby = new double[oryginal._wymiar];
         _wymiar = oryginal._wymiar;
         for (int i = 0; i < _wymiar; i++) {
@@ -47,18 +46,11 @@ public:
         }
     }
 
-    VektorNd &operator=(const VektorNd &right) {
-        cout << "konstruktor poprzez =" << endl;
-        if (_wymiar != right._wymiar) {
-            delete[] _liczby;
+    VektorNd &operator=(VektorNd right) {
+        cout << "konstruktor VektorNd =" << endl;
 
-            _liczby = new double[right._wymiar];
-            _wymiar = right._wymiar;
-        }
-        for (int i = 0; i < _wymiar; i++) {
-            _liczby[i] = right._liczby[i];
-        }
-
+        swap(_liczby, right._liczby);
+        swap(_wymiar, right._wymiar);
         return *this;
     }
 
