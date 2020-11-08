@@ -38,6 +38,7 @@ public:
 
     ~VectorOfVectors2() {
         cout << "Destruktor VectorOfVectors2<" << this << ">" << endl;
+        delete [] vektory;
     }
 
     void dodaj_nowy(const VektorNd *vektor) {

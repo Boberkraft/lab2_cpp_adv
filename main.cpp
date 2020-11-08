@@ -122,9 +122,10 @@ void main7() {
     const double wartosci2[] = {4, 5, 6};
     const double wartosci3[] = {7, 8, 9, 10};
 
+    auto x = new VektorNd(wartosci2, 3);
     const VektorNd *wektory[] = {
             new VektorNd(wartosci1, 3),
-            new VektorNd(wartosci2, 3),
+            x,
             new VektorNd(wartosci3, 4),
     };
 
@@ -133,6 +134,7 @@ void main7() {
     auto vov3 = new VectorOfVectors2(wektory, 3);
     auto vov4 = VectorOfVectors2(*vov3);
 
+    x->setCoef(9999, 0);
     cout << vov1;
     cout << vov2;
 
@@ -160,6 +162,6 @@ int main() {
 //    main4();
 //    main5();
 //    main6();
-    main7();
+//    main7();
     main8();
 }
